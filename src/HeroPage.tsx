@@ -36,7 +36,7 @@ export const HeroPage: React.FC = () => {
             }
         })
         return () => { mounted = false };
-    }, []);
+    });
 
     return (
         <div>
