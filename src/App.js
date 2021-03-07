@@ -6,11 +6,6 @@ import md5 from 'md5';
 import 'fontsource-roboto';
 import HeroCard from './HeroCard';
 import { makeStyles } from '@material-ui/core/styles';
-import ReactGA from 'react-ga';
-
-const TRACKING_ID = "UA-191549747-1";
-ReactGA.initialize(TRACKING_ID);
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 const useStyles = makeStyles((theme) => ({
   root: {
