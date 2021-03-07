@@ -26,10 +26,10 @@ export const HeroPage: React.FC = () => {
     const publicKey = '3c36ca4b2e113ad8aabc725a3cca1bf0';
     const ts = moment().unix();
     const hashKey = md5(`${ts}${privateKey}${publicKey}`);
-    const callUrl = `https://gateway.marvel.com/v1/public/characters/${heroId}?ts=${ts}&apikey=${publicKey}&hash=${hashKey}&nameStartsWith=spider`;
 
     useEffect(() => {
         let mounted = true;
+        const callUrl = `https://gateway.marvel.com/v1/public/characters/${heroId}?ts=${ts}&apikey=${publicKey}&hash=${hashKey}&nameStartsWith=spider`;
 
         axios.get(callUrl).then((res) => {
             const results = res.data.data.results[0];
