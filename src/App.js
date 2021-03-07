@@ -26,7 +26,7 @@ function App() {
     let mounted = true;
     const ts = moment().unix();
     const hashKey = md5(`${ts}${privateKey}${publicKey}`);
-    axios.get(`http://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hashKey}&nameStartsWith=spider`).then(res => {
+    axios.get(`https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hashKey}&nameStartsWith=spider`).then(res => {
       const results = res.data.data.results;
       if (mounted) {
         setHeroList(results)
