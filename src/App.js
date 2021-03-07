@@ -8,7 +8,7 @@ import HeroCard from './HeroCard';
 import { makeStyles } from '@material-ui/core/styles';
 import ReactGA from 'react-ga';
 
-const TRACKING_ID = "G-4L0K55E2FJ";
+const TRACKING_ID = "UA-191549747-1";
 ReactGA.initialize(TRACKING_ID);
 ReactGA.pageview(window.location.pathname + window.location.search);
 
