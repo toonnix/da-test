@@ -23,6 +23,7 @@ function App() {
   const classes = useStyles();
 
   useEffect(() => {
+    window.analytics.track('Visit Homepage');
     let mounted = true;
     const ts = moment().unix();
     const hashKey = md5(`${ts}${privateKey}${publicKey}`);
