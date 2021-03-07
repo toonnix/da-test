@@ -16,20 +16,20 @@ export interface HeroInfo {
 }
 
 export const HeroPage: React.FC = () => {
+    let { heroId } = useParams<HeroParams>();
+
     const [heroInfo, setHeroInfo] = useState<HeroInfo>({
         name: '',
         description: '',
     });
-    
-    useEffect(() => {
-        let { heroId } = useParams<HeroParams>();
-        let mounted = true;
-        const privateKey = 'e94ca8202f710e551f0065740b10772dccee1848';
-        const publicKey = '3c36ca4b2e113ad8aabc725a3cca1bf0';
-        const ts = moment().unix();
-        const hashKey = md5(`${ts}${privateKey}${publicKey}`);
+    const privateKey = 'e94ca8202f710e551f0065740b10772dccee1848';
+    const publicKey = '3c36ca4b2e113ad8aabc725a3cca1bf0';
+    const ts = moment().unix();
+    const hashKey = md5(`${ts}${privateKey}${publicKey}`);
+    const callUrl = `https://gateway.marvel.com/v1/public/characters/${heroId}?ts=${ts}&apikey=${publicKey}&hash=${hashKey}&nameStartsWith=spider`;
 
-        const callUrl = `https://gateway.marvel.com/v1/public/characters/${heroId}?ts=${ts}&apikey=${publicKey}&hash=${hashKey}&nameStartsWith=spider`;
+    useEffect(() => {
+        let mounted = true;
 
         axios.get(callUrl).then((res) => {
             const results = res.data.data.results[0];
@@ -39,7 +39,7 @@ export const HeroPage: React.FC = () => {
             }
         })
         return () => { mounted = false };
-    }, []);
+    }, [heroId]);
 
     return (
         <Card>
