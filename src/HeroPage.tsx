@@ -24,7 +24,6 @@ export const HeroPage: React.FC = () => {
     });
 
     useEffect(() => {
-        (window as any).analytics.page();
         let mounted = true;
         const _heroId = heroId;
         const privateKey = 'e94ca8202f710e551f0065740b10772dccee1848';
@@ -36,7 +35,7 @@ export const HeroPage: React.FC = () => {
         axios.get(callUrl).then((res) => {
             const results = res.data.data.results[0];
             if (mounted) {
-                (window as any).analytics.track('visit-hero-page', {'hero name' : results.name});
+                (window as any).analytics.track('visit-hero-page', {heroName : results.name});
                 setHeroInfo(results);
             }
         })
